@@ -1,0 +1,12 @@
+{
+    "image1": {
+        "data": "hwQQABAAAADn7u7u7u7u3ufu7e7e7u7u5+7u7u7u7u7n7u7u7u3u7nfn7u7u7u7ucOfu7u7u7u5w7u7u7e7u7nfu7u7u7u3u5+7u7u7u7e7n7u7u7t7u7nfu7u3u3u7u5+7u7u7u7u537u7u7t7u7ufu7u3u3u7ud+7u7u7u7u537u7u7u7u3g==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "GRASS"
+    },
+    "*": {
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64",
+        "namespace": "myImages"
+    }
+}
