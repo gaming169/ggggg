@@ -3,6 +3,22 @@ namespace SpriteKind {
     export const CCTV = SpriteKind.create()
     export const grassblock = SpriteKind.create()
 }
+function ghcfytujkcv_u () {
+    for (let index = 0; index < 50; index++) {
+        pause(500)
+        BLO_CK = sprites.create(assets.image`GRASS`, SpriteKind.grassblock)
+        BLO_CK.setPosition(160, randint(5, 115))
+        BLO_CK.setVelocity(-100, 0)
+    }
+    game.gameOver(true)
+    game.setGameOverScoringType(game.ScoringType.HighScore)
+    game.setGameOverEffect(true, effects.confetti)
+    game.setGameOverMessage(true, "YOU WIN!")
+    game.setGameOverPlayable(true, music.melodyPlayable(music.powerUp), false)
+}
+sprites.onOverlap(SpriteKind.Player, SpriteKind.grassblock, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.door, function (sprite, otherSprite) {
     info.setLife(3)
     info.setScore(0)
@@ -129,9 +145,19 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.door, function (sprite, otherSpr
         bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
         `)
     sprites.destroy(door1)
+    ghcfytujkcv_u()
+})
+info.onLifeZero(function () {
+    game.gameOver(false)
+    game.setGameOverMessage(false, "GAME OVER!")
+    game.setGameOverScoringType(game.ScoringType.HighScore)
+    game.setGameOverPlayable(false, music.melodyPlayable(music.powerDown), false)
+    game.setGameOverEffect(false, effects.confetti)
 })
 let BLO_CK: Sprite = null
 let door1: Sprite = null
+info.setScore(0)
+scene.setBackgroundColor(9)
 scene.setBackgroundColor(6)
 let myCorg = corgio.create(SpriteKind.Player)
 myCorg.verticalMovement(true)
@@ -257,8 +283,9 @@ door1.setPosition(140, 100)
 scaling.scaleByPixels(door1, 10, ScaleDirection.Horizontally, ScaleAnchor.Top)
 scaling.scaleByPixels(door1, 10, ScaleDirection.Vertically, ScaleAnchor.Top)
 CAMERA.setPosition(6, 4)
+game.onUpdateInterval(2000, function () {
+    info.changeScoreBy(1)
+})
 game.onUpdateInterval(500, function () {
-    BLO_CK = sprites.create(assets.image`GRASS`, SpriteKind.grassblock)
-    BLO_CK.setPosition(160, randint(5, 115))
-    BLO_CK.setVelocity(-100, 0)
+	
 })
